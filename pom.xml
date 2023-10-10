@@ -52,16 +52,7 @@
             <artifactId>testng</artifactId>
             <version>7.7.0</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.seleniumhq.selenium</groupId>-->
-<!--            <artifactId>selenium-java</artifactId>-->
-<!--            <version>3.141.59</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>io.github.bonigarcia</groupId>-->
-<!--            <artifactId>webdrivermanager</artifactId>-->
-<!--            <version>4.3.1</version>-->
-<!--        </dependency>-->
+
     </dependencies>
 
     <build>
@@ -79,6 +70,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>devops-integration</finalName>
     </build>
 
 </project>
