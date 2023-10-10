@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    tools {
+        maven 'M2_HOME'
+    }
+    stages {
+        stage('Build Maven') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/moduletest']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/rihab2106/5DS1-G6-KADDEM']]])
+                sh 'mvn clean install'
+            }
+        }
+        stage('Build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t rihabbns/docker-integration .'
+                }
+
+            }
+        }
+        stage('push image to dockerHub'){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+                     sh 'docker login -u rihabbns -p ${dockerhubpwd}'
+}
+
+
+                    sh 'docker push rihabbns/docker-integration'
+                }
+            }
+        }
+
+    }
+}
