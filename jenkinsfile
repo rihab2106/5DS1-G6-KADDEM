@@ -23,13 +23,20 @@ pipeline {
                 script{
                     withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
                      sh 'docker login -u rihabbns -p ${dockerhubpwd}'
-}
+                      }
 
 
                     sh 'docker push rihabbns/docker-integration'
                 }
             }
         }
+          stage('SonarQube Analysis') {
+                   steps{
+                       withSonarQubeEnv('sonarqube'){
+                           sh "mvn sonar:sonar"
+                       }
+                   }
+                }
 
     }
 }
