@@ -10,7 +10,7 @@
     </parent>
     <groupId>tn.esprit.spring</groupId>
     <artifactId>kaddem</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>kaddem</name>
     <description>kaddem</description>
     <properties>
@@ -67,6 +67,13 @@
         </dependency>
 
     </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>project-release</id>
+            <name>Nexus Repository</name>
+            <url>http://172.10.0.3:8081/repository/project-release/</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>

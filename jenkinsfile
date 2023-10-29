@@ -36,7 +36,18 @@ pipeline {
                            sh "mvn sonar:sonar"
                        }
                    }
+
                 }
+                stage('Upload artifacts to nexus'){
+                               steps{
+                                   sh 'mvn deploy:deploy-file -Durl=http://172.10.0.3:8081/repository/project-release -Dfile=target/devops-integration.jar -DgroupId=tn.esprit.spring -DartifactId=kaddem -Dversion=0.0.1 -Dpackaging=jar -DrepositoryId=project-release -DgeneratePom=false'
+
+
+
+
+                     }
+
+                      }
 
     }
 }
