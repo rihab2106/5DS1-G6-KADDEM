@@ -13,7 +13,7 @@ services:
     volumes:
       - db:/var/lib/mysql
 
-  achat-backend:
+  kaddem-backend:
     depends_on:
       - mysqldb
     build: ./
