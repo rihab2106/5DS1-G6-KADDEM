@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>tn.esprit.spring</groupId>
-    <artifactId>5DS1-G6-KADDEM</artifactId>
-    <version>1.0</version>
-    <name>5DS1-G6-KADDEM</name>
-    <description>5DS1-G6-KADDEM</description>
+    <artifactId>kaddem</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>kaddem</name>
+    <description>kaddem</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -48,6 +48,14 @@
         </dependency>
 
     </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>deploymentRepo</id>
+            <name>Nexus Repository</name>
+            <url>http://172.10.0.140:8089/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
+
 
     <build>
         <plugins>
@@ -64,12 +72,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>devops-integration</finalName>
     </build>
-    <distributionManagement>
-        <repository>
-            <id>deploymentRepo</id>
-            <name>admin</name>
-            <url>http://192.168.33.10:8080/repository/maven-releases/</url>
-        </repository>
-    </distributionManagement>
+
 </project>
