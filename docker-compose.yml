@@ -9,44 +9,6 @@ services:
     volumes:
       - /home/mysql/data:/var/lib/mysql
 
-  sonarqube:
-    image: sonarqube:latest
-    container_name: sonarqube
-    ports:
-      - "9000:9000"
-    environment:
-      - SONARQUBE_JDBC_URL=jdbc:postgresql://sonarqube-db:5432/sonar
-    volumes:
-      - sonarqube_data:/opt/sonarqube/data
-      - sonarqube_extensions:/opt/sonarqube/extensions
-      - sonarqube_logs:/opt/sonarqube/logs
-      - sonarqube_temp:/opt/sonarqube/temp
-    networks:
-      - sonarqube_network
-    depends_on:
-      - sonarqube-db
-
-  sonarqube-db:
-    image: postgres:latest
-    container_name: sonarqube-db
-    environment:
-      - POSTGRES_USER=sonar
-      - POSTGRES_PASSWORD=sonar
-      - POSTGRES_DB=sonar
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    networks:
-      - sonarqube_network
-
-  nexus:
-    image: sonatype/nexus3:latest
-    container_name: nexus
-    ports:
-      - "8081:8081"
-    volumes:
-      - nexus_data:/nexus-data
-    networks:
-      - nexus_network
 
   spring_app:
     image: bahriaraed/devops-integration
@@ -57,14 +19,3 @@ services:
     depends_on:
       - mysqldb
 
-networks:
-  sonarqube_network:
-  nexus_network:
-
-volumes:
-  sonarqube_data:
-  sonarqube_extensions:
-  sonarqube_logs:
-  sonarqube_temp:
-  postgres_data:
-  nexus_data:
