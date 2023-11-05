@@ -49,13 +49,21 @@ pipeline {
                                  }
                              }
         stage('test grafana '){
-                                         steps{
+            steps{
 
 
-                                              sh 'curl -I http://172.10.0.3:3000'
+                sh 'curl -I http://172.10.0.3:3000'
 
-                                           }
-                                      }
+                     }
+                        }
+        stage('docker compose'){
+                    steps{
+                        script{
+                            sh 'docker-compose build'
+                            sh 'docker-compose up -d'
+                        }
+                    }
+                }
 
 
     }
