@@ -64,6 +64,16 @@ pipeline {
                         }
                     }
                 }
+        stage('Send Email Notification') {
+                    steps {
+                        emailext(
+                            subject: "Test Email Notification",
+                            body: "This is a test email sent from Jenkins pipline arrive to its end.",
+                            recipientProviders: [culprits()],
+                            to: 'rihab.bensalem@esprit.tn',
+                        )
+                    }
+                }
 
 
     }
