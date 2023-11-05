@@ -1,0 +1,26 @@
+version: '2.3'
+services:
+  springboot-app:
+    image: rihabbns/docker-integration:latest
+    ports:
+      - "8089:8089"
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:mysql://mysql-db:3306/kaddem_db"
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE: kaddem_db
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3306:3306"
+    volumes:
+      - db:/var/lib/mysql
+
+
+volumes:
+  db:
