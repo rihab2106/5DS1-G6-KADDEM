@@ -11,8 +11,7 @@ services:
 
 
   spring_app:
-    image: ayoubmouelhi/kaddem
-    container_name: devopscontainer
+    image: ayoubmouelhi/kaddem-1.0
     restart: on-failure
     ports:
       - 9091:9091
